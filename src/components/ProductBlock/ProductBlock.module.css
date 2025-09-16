@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0.5em;
+  border: solid 1px #000;
+  font-size: 1.2em;
+  width: 70%;
+  height: 100%;
+}
+
+.container img {
+  width: 70%;
+}
