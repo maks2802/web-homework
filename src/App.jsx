@@ -1,4 +1,3 @@
-import "./App.css";
 import ProductList from "./components/ProductList/ProductList";
 import Welcome from "./components/Welcome/Welcome";
 import { userInfo, productInfo } from "./data";
