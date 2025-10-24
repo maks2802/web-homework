@@ -1,23 +1,26 @@
-export const userInfo = {
-  name: "Maksym Komrakov",
-  email: "komrakovmax2004@gmail.com",
-  phone: "380677166880",
+export const book1 = {
+  name: "1984",
+  author: "George Orwell",
+  price: 200,
 };
 
 export const productInfo = [
   {
-    img: "/src/img/dog-1.jpg",
-    title: "Tom",
-    price: "600$",
-  },
-  {
-    img: "/src/img/dog-2.jpg",
-    title: "Jessie",
+    id: 1,
+    name: "laptop",
+    description: "Good laptop, cheap price",
     price: "1000$",
   },
   {
-    img: "/src/img/dog-3.jpg",
-    title: "Donald",
-    price: "2000$",
+    id: 2,
+    name: "toy",
+    description: "Funny toy for children",
+    price: "100$",
+  },
+  {
+    id: 3,
+    name: "ticket",
+    description: "Ticket to cinema",
+    price: "3$",
   },
 ];

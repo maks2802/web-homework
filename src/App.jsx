@@ -1,17 +1,14 @@
+import Book from "./components/Book/Book";
+import Calculator from "./components/Calculator/Calculator";
 import ProductList from "./components/ProductList/ProductList";
-import Welcome from "./components/Welcome/Welcome";
-import { userInfo, productInfo } from "./data";
+import { book1 } from "./data";
 
 function App() {
   return (
     <>
-      <Welcome
-        name={userInfo.name}
-        email={userInfo.email}
-        phone={userInfo.phone}
-      />
-      <h1 style={{ paddingLeft: "20px" }}>Products</h1>
-      <ProductList products={productInfo} />
+      <Calculator />
+      <Book name={book1.name} author={book1.author} price={book1.price} />
+      <ProductList />
     </>
   );
 }
