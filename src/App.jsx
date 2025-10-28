@@ -1,18 +1,19 @@
-import ProductList from "./components/ProductList/ProductList";
-import Welcome from "./components/Welcome/Welcome";
-import { userInfo, productInfo } from "./data";
+import ProductList from "./components/ProductList";
+import Welcome from "./components/Welcome";
 
 function App() {
+  const user = {
+    name: "John Smith",
+    email: "john123@gmail.com",
+    phone: "+380677899990",
+  };
+
   return (
-    <>
-      <Welcome
-        name={userInfo.name}
-        email={userInfo.email}
-        phone={userInfo.phone}
-      />
-      <h1 style={{ paddingLeft: "20px" }}>Products</h1>
-      <ProductList products={productInfo} />
-    </>
+    <div>
+      <Welcome name={user.name} email={user.email} phone={user.phone} />
+      <h1>Products</h1>
+      <ProductList />
+    </div>
   );
 }
 
