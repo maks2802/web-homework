@@ -1,15 +1,11 @@
-import Form1 from "./components/Form1/Form1";
-import Form2 from "./components/Form2/Form2";
-import Form3 from "./components/Form3/Form3";
-import Form4 from "./components/Form4/Form4";
+import Example1 from "./components/Example1/Example1";
+import Example2 from "./components/Example2/Example2";
 
 function App() {
   return (
     <>
-      <Form1 />
-      <Form2 />
-      <Form3 />
-      <Form4 />
+      <Example1 />
+      <Example2 />
     </>
   );
 }
