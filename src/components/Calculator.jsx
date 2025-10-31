@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Calculator.module.css";
+import "./Calculator.css";
 
 const Calculator = () => {
   const [result, setResult] = useState(0);
@@ -21,7 +21,7 @@ const Calculator = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className="calculator-container">
       <h1>Calculator</h1>
       <div>
         <button onClick={increment}>+ 2</button>
