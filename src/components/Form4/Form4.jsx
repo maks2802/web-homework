@@ -1,102 +1,83 @@
 import { useState } from "react";
-import styles from "./Form4.module.css";
+import "./Form4.css";
 
 const Form4 = () => {
   const [name, setName] = useState("");
-  const [selectedValues, setSelectedValues] = useState(null);
-  const [checked, setChecked] = useState({
-    javascript: false,
-    java: false,
-    cpp: false,
-  });
+  const [languages, setLanguages] = useState([]);
+  const [submittedData, setSubmittedData] = useState(null);
 
-  const handleChangeCheckbox = (e) => {
-    setChecked((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.checked,
-    }));
+  const handleCheckboxChange = (e) => {
+    const value = e.target.value;
+    if (languages.includes(value)) {
+      setLanguages(languages.filter((lang) => lang !== value));
+    } else {
+      setLanguages([...languages, value]);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("--- FORM 4 ---");
-    console.log("Name: ", name);
-    console.log("Languages: ", checked);
-
-    setSelectedValues({ name, languages: checked });
-
-    setName("");
-
-    setChecked({
-      javascript: false,
-      java: false,
-      cpp: false,
-    });
+    setSubmittedData({ name, languages });
   };
 
   return (
-    <>
-      <h2 className={styles.title}>Form 4</h2>
-      <form onSubmit={handleSubmit} className={styles.content}>
-        <div className={styles.field}>
-          <label htmlFor="name">Name</label>
+    <div>
+      <form onSubmit={handleSubmit} className="content-4">
+        <label className="field-4">
+          Ім’я:
           <input
             type="text"
-            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Введіть ім’я"
           />
+        </label>
+        <div>
+          <p>Оберіть мови програмування:</p>
+          <label className="field-4">
+            <input
+              type="checkbox"
+              value="JavaScript"
+              checked={languages.includes("JavaScript")}
+              onChange={handleCheckboxChange}
+            />
+            JavaScript
+          </label>
+          <label className="field-4">
+            <input
+              type="checkbox"
+              value="Python"
+              checked={languages.includes("Python")}
+              onChange={handleCheckboxChange}
+            />
+            Python
+          </label>
+          <label className="field-4">
+            <input
+              type="checkbox"
+              value="C#"
+              checked={languages.includes("C#")}
+              onChange={handleCheckboxChange}
+            />
+            C#
+          </label>
         </div>
-        <div className={styles.field}>
-          <label>
-            <input
-              type="checkbox"
-              name="javascript"
-              checked={checked.javascript}
-              onChange={handleChangeCheckbox}
-            />
-            Javascript
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="java"
-              checked={checked.java}
-              onChange={handleChangeCheckbox}
-            />
-            Java
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="cpp"
-              checked={checked.cpp}
-              onChange={handleChangeCheckbox}
-            />
-            C++
-          </label>
-        </div>
-        <button type="submit" className={styles.button}>
-          Submit
+        <button type="submit" className="button-4">
+          Надіслати
         </button>
       </form>
-      {selectedValues !== null && (
+      {submittedData && (
         <div>
+          <h3>Введені дані:</h3>
+          <p>Ім’я: {submittedData.name}</p>
           <p>
-            Your name: <strong>{selectedValues.name}</strong>
-          </p>
-          <p>
-            Your language(s):{" "}
-            <strong>
-              {Object.entries(selectedValues.languages)
-                .filter(([, isChecked]) => isChecked)
-                .map(([lang]) => lang)
-                .join(", ")}
-            </strong>
+            Мови програмування:{" "}
+            {submittedData.languages.length > 0 &&
+              submittedData.languages.join(", ")}
           </p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

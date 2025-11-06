@@ -1,58 +1,40 @@
 import { useState } from "react";
-import styles from "./Form1.module.css";
+import "./Form1.css";
 
 const Form1 = () => {
-  const [values, setValues] = useState({
-    login: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("--- FORM 1 ---");
-    console.log("Login: ", values.login);
-    console.log("Password: ", values.password);
-
-    setValues({
-      login: "",
-      password: "",
-    });
+    console.log("Логін:", login);
+    console.log("Пароль:", password);
   };
 
   return (
-    <>
-      <h2>Form 1</h2>
-      <form onSubmit={handleSubmit} className={styles.content}>
-        <div className={styles.field}>
-          <label htmlFor="login">Login</label>
-          <input
-            type="text"
-            name="login"
-            value={values.login}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" className={styles.button}>
-          Submit
-        </button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} className="content-1">
+      <label className="field-1">
+        Логін:
+        <input
+          type="text"
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+          placeholder="Введіть логін"
+        />
+      </label>
+      <label className="field-1">
+        Пароль:
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Введіть пароль"
+        />
+      </label>
+      <button type="submit" className="button-1">
+        Надіслати
+      </button>
+    </form>
   );
 };
 

@@ -1,94 +1,70 @@
 import { useState } from "react";
-import styles from "./Form3.module.css";
+import "./Form3.css";
 
 const Form3 = () => {
-  const [values, setValues] = useState({
-    name: "",
-    language: "",
-  });
-  const [selectedValues, setSelectedValues] = useState(null);
-
-  const handleChange = (e) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [name, setName] = useState("");
+  const [language, setLanguage] = useState("");
+  const [submittedData, setSubmittedData] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("--- FORM 3 ---");
-    console.log("Name: ", values.name);
-    console.log("Language: ", values.language);
-
-    setSelectedValues(values);
-
-    setValues({
-      name: "",
-      language: "",
-    });
+    setSubmittedData({ name, language });
   };
 
   return (
-    <>
-      <h2 className={styles.title}>Form 3</h2>
-      <form onSubmit={handleSubmit} className={styles.content}>
-        <div className={styles.field}>
-          <label htmlFor="name">Name</label>
+    <div>
+      <form onSubmit={handleSubmit} className="content-3">
+        <label className="field-3">
+          Ім’я:
           <input
             type="text"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Введіть ім’я"
           />
-        </div>
-        <div className={styles.field}>
-          <label>
+        </label>
+        <div>
+          <p>Оберіть мову програмування:</p>
+          <label className="field-3">
             <input
               type="radio"
-              name="language"
-              value="js"
-              checked={values.language === "js"}
-              onChange={handleChange}
+              value="JavaScript"
+              checked={language === "JavaScript"}
+              onChange={(e) => setLanguage(e.target.value)}
             />
-            Javascript
+            JavaScript
           </label>
-          <label>
+          <label className="field-3">
             <input
               type="radio"
-              name="language"
-              value="java"
-              checked={values.language === "java"}
-              onChange={handleChange}
+              value="Python"
+              checked={language === "Python"}
+              onChange={(e) => setLanguage(e.target.value)}
             />
-            Java
+            Python
           </label>
-          <label>
+          <label className="field-3">
             <input
               type="radio"
-              name="language"
-              value="cpp"
-              checked={values.language === "cpp"}
-              onChange={handleChange}
+              value="C#"
+              checked={language === "C#"}
+              onChange={(e) => setLanguage(e.target.value)}
             />
-            C++
+            C#
           </label>
         </div>
-        <button type="submit" className={styles.button}>
-          Submit
+        <button type="submit" className="button-3">
+          Надіслати
         </button>
       </form>
-      {selectedValues !== null && (
+      {submittedData && (
         <div>
-          <p>
-            Your name: <strong>{selectedValues.name}</strong>
-          </p>
-          <p>
-            Your language: <strong>{selectedValues.language}</strong>
-          </p>
+          <h3>Введені дані:</h3>
+          <p>Ім’я: {submittedData.name}</p>
+          <p>Мова програмування: {submittedData.language}</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,20 +1,20 @@
-.title {
+.title-2 {
   margin-top: 28px;
 }
 
-.content {
+.content-2 {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 12px;
 }
 
-.field {
+.field-2 {
   display: flex;
   gap: 8px;
 }
 
-.button {
+.button-2 {
   max-width: 100px;
   margin-bottom: 12px;
 }

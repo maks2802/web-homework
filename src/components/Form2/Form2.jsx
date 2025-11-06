@@ -1,91 +1,61 @@
 import { useState } from "react";
-import styles from "./Form2.module.css";
+import "./Form2.css";
 
 const Form2 = () => {
-  const [values, setValues] = useState({
-    name: "",
-    language: "",
-    comment: "",
-  });
-  const [selectedValues, setSelectedValues] = useState(null);
-
-  const handleChange = (e) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [name, setName] = useState("");
+  const [language, setLanguage] = useState("JavaScript");
+  const [comment, setComment] = useState("");
+  const [submittedData, setSubmittedData] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("--- FORM 2 ---");
-    console.log("Name: ", values.name);
-    console.log("Language: ", values.language);
-    console.log("Comment: ", values.comment);
-
-    setSelectedValues(values);
-
-    setValues({
-      name: "",
-      language: "",
-      comment: "",
-    });
+    setSubmittedData({ name, language, comment });
   };
 
   return (
-    <>
-      <h2 className={styles.title}>Form 2</h2>
-      <form onSubmit={handleSubmit} className={styles.content}>
-        <div className={styles.field}>
-          <label htmlFor="name">Name</label>
+    <div>
+      <form onSubmit={handleSubmit} className="content-2">
+        <label className="field-2">
+          Ім’я:
           <input
             type="text"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Введіть ім’я"
           />
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="language">Language</label>
+        </label>
+        <label className="field-2">
+          Мова програмування:
           <select
-            id="language"
-            name="language"
-            value={values.language}
-            onChange={handleChange}
-            className={styles.field}
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
           >
-            <option value="" disabled></option>
-            <option value="js">JavaScript</option>
-            <option value="java">Java</option>
-            <option value="cpp">C++</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="C#">C#</option>
           </select>
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="comment">Comment</label>
+        </label>
+        <label className="field-2">
+          Коментар:
           <textarea
-            name="comment"
-            value={values.comment}
-            onChange={handleChange}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Введіть коментар"
           />
-        </div>
-        <button type="submit" className={styles.button}>
-          Submit
+        </label>
+        <button type="submit" className="button-2">
+          Надіслати
         </button>
       </form>
-      {selectedValues !== null && (
+      {submittedData && (
         <div>
-          <p>
-            Your name: <strong>{selectedValues.name}</strong>
-          </p>
-          <p>
-            Your language: <strong>{selectedValues.language}</strong>
-          </p>
-          <p>
-            Your comment: <strong>{selectedValues.comment}</strong>
-          </p>
+          <h3>Введені дані:</h3>
+          <p>Ім’я: {submittedData.name}</p>
+          <p>Мова програмування: {submittedData.language}</p>
+          <p>Коментар: {submittedData.comment}</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
