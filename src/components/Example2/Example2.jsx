@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MyInput from "./MyInput";
-import styles from "../Example.module.css";
+import "../Example.css";
 
 const Example2 = () => {
   const [login, setLogin] = useState("");
@@ -8,24 +8,18 @@ const Example2 = () => {
 
   return (
     <div>
-      <h2 className={styles.title}>Example 2</h2>
-      <div className={styles.input}>
+      <h2 className="title">Example 2</h2>
+      <div className="input">
         <span>Login: {login}</span>
         <span>Password: {password}</span>
       </div>
 
-      <div className={styles.input}>
-        <MyInput
-          type="text"
-          onChange={setLogin}
-          label="Enter login: "
-          placeholder="Login"
-        />
+      <div className="input">
+        <MyInput type="text" onChange={setLogin} label="Enter login: " />
         <MyInput
           type="password"
           onChange={setPassword}
           label="Enter password: "
-          placeholder="Password"
         />
       </div>
     </div>
