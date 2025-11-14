@@ -1,24 +1,23 @@
-import Product from "./components/Product";
-import ProductList from "./components/ProductList";
-import { product1, product2, productList } from "./data";
+import { Route, Routes } from "react-router-dom";
+import Contacts from "./components/Contacts";
+import Delivery from "./components/Delivery";
+import Layout from "./components/Layout";
+import NewItems from "./components/NewItems";
+import Shop from "./components/Shop";
+import Users from "./components/Users";
 
 function App() {
   return (
-    <>
-      <Product
-        id={product1.id}
-        name={product1.name}
-        price={product1.price}
-        inStock={product1.inStock}
-      />
-      <Product
-        id={product2.id}
-        name={product2.name}
-        price={product2.price}
-        inStock={product2.inStock}
-      />
-      <ProductList products={productList} />
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Shop />} />
+        <Route path="delivery" element={<Delivery />} />
+        <Route path="newitems" element={<NewItems />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="users" element={<Users />} />
+        <Route path="*" element={<Shop />} />
+      </Route>
+    </Routes>
   );
 }
 

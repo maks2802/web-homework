@@ -1,0 +1,38 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #222;
+  padding: 12px 24px;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.navLink {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navLink.active {
+  border-bottom: 2px solid #61dafb;
+  color: #61dafb;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+}
+
+.footer {
+  text-align: center;
+  padding: 12px;
+  background-color: #f3f3f3;
+  font-size: 14px;
+}
