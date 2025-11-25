@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import Product from "./Product";
-import styles from "./Product.module.css";
+import "./styles.css";
 
 const ProductList = ({ products }) => {
   return (
     <div>
-      <h2 className={styles.title}>Product List</h2>
+      <h2 className="title">Product List</h2>
       {products.map((item) => (
         <Product
           key={item.id}

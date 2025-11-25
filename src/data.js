@@ -1,17 +1,3 @@
-export const product1 = {
-  id: 1,
-  name: "Soap",
-  price: 20,
-  inStock: true,
-};
-
-export const product2 = {
-  id: 2,
-  name: "Shampoo",
-  price: 30,
-  inStock: false,
-};
-
 export const productList = [
   {
     id: 3,

@@ -1,24 +1,19 @@
+import { useState } from "react";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
-import { product1, product2, productList } from "./data";
 
 function App() {
+  const [products] = useState([
+    { id: 1, name: "Laptop", price: 999.99, inStock: true },
+    { id: 2, name: "Smartphone", price: 599.99, inStock: false },
+    { id: 3, name: "Tablet", price: 349.99, inStock: true },
+  ]);
+
   return (
-    <>
-      <Product
-        id={product1.id}
-        name={product1.name}
-        price={product1.price}
-        inStock={product1.inStock}
-      />
-      <Product
-        id={product2.id}
-        name={product2.name}
-        price={product2.price}
-        inStock={product2.inStock}
-      />
-      <ProductList products={productList} />
-    </>
+    <div>
+      <Product id={1} name="Laptop" price={999.99} inStock={true} />
+      <ProductList products={products} />
+    </div>
   );
 }
 

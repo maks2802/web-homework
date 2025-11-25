@@ -1,17 +1,13 @@
 import PropTypes from "prop-types";
-import styles from "./Product.module.css";
+import "./styles.css";
 
 const Product = ({ id, name, price, inStock }) => {
   return (
-    <div className={styles.container}>
-      <p>ID: {id}</p>
+    <div className="container">
+      <h3 className="title">Product ID: {id}</h3>
       <p>Name: {name}</p>
-      <p>Price: {price}</p>
-      {inStock ? (
-        <p className={styles.inStock}>In Stock</p>
-      ) : (
-        <p className={styles.outStock}>Out of Stock</p>
-      )}
+      <p>Price: ${price}</p>
+      <p>{inStock ? "В наявності" : "Товару немає"}</p>
     </div>
   );
 };
